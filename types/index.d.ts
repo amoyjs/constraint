@@ -14,6 +14,6 @@ declare namespace PIXI {
     export interface Graphics extends Enchance {}
 }
 
-declare module '@amoy/constrain' {
+declare module '@amoy/constraint' {
     export default function constrain(PIXI: any): any
 }
