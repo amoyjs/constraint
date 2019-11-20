@@ -1,0 +1,30 @@
+{
+  "name": "@amoy/constraint",
+  "moduleName": "constraint",
+  "version": "0.1.0",
+  "description": "constraint for pixi.js.",
+  "main": "dist/constraint.js",
+  "module": "dist/constraint.es.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "start": "NODE_ENV=development rollup -w -c rollup.config.js",
+    "dev": "NODE_ENV=development rollup -c rollup.config.js",
+    "prod": "NODE_ENV=production rollup -c rollup.config.js",
+    "publish": "rm -rf dist && npm run dev && npm run prod"
+  },
+  "repository": {
+    "url": "https://github.com/amoyjs/constraint.git",
+    "type": "git"
+  },
+  "author": "大板栗 <576839360@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup-plugin-alias": "^1.5.2",
+    "rollup-plugin-babel-minify": "^9.0.0",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.5.2"
+  }
+}
