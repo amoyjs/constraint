@@ -1,20 +1,20 @@
 declare namespace PIXI {
     export interface Container {
-        putCenter(this: any, global?: boolean): void
-        putCenterX(this: any, global?: boolean): void
-        putCenterY(this: any, global?: boolean): void
-        putLeft(this: any, global?: boolean): void
-        putTop(this: any, global?: boolean): void
-        putRight(this: any, global?: boolean): void
-        putBottom(this: any, global?: boolean): void
+        putCenter(offsetX?: number, offsetY?: number, global?: boolean): void
+        putCenterX(offsetX?: number, global?: boolean): void
+        putCenterY(offsetY?: number, global?: boolean): void
+        putLeft(offsetX?: number, global?: boolean): void
+        putTop(offsetY?: number, global?: boolean): void
+        putRight(offsetX?: number, global?: boolean): void
+        putBottom(offsetY?: number, global?: boolean): void
 
-        putCenter(this: any, offsetX?: number, offsetY?: number, global?: boolean): void
-        putCenterX(this: any, offsetX?: number, global?: boolean): void
-        putCenterY(this: any, offsetY?: number, global?: boolean): void
-        putLeft(this: any, offsetX?: number, global?: boolean): void
-        putTop(this: any, offsetY?: number, global?: boolean): void
-        putRight(this: any, offsetX?: number, global?: boolean): void
-        putBottom(this: any, offsetY?: number, global?: boolean): void
+        putCenter(global?: boolean): void
+        putCenterX(global?: boolean): void
+        putCenterY(global?: boolean): void
+        putLeft(global?: boolean): void
+        putTop(global?: boolean): void
+        putRight(global?: boolean): void
+        putBottom(global?: boolean): void
     }
 }
 
