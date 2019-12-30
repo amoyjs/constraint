@@ -1,122 +1,110 @@
-import { getSize } from './common'
+import { getSize, fix, fixX, fixY } from './common'
 
-export function putCenter(this: any, offsetX: number = 0, offsetY: number = 0) {
+export function putCenter(target: any, offsetX: number = 0, offsetY: number = 0, global = false) {
+    if (typeof offsetX === 'boolean') {
+        global = offsetX
+        offsetX = 0
+        offsetY = 0
+    }
     const executable = () => {
-        const { width: parentWidth, height: parentHeight} = getSize(this.parent)
+        const { width: parentWidth, height: parentHeight } = getSize(target.parent, global)
 
-        this.x = (parentWidth - this.width) / 2 + offsetX
-        this.y = (parentHeight - this.height) / 2 + offsetY
+        target.x = (parentWidth - target.width) / 2 + offsetX
+        target.y = (parentHeight - target.height) / 2 + offsetY
 
-        if (this.anchor) {
-            this.anchor.set(.5)
-            this.x += this.width * this.anchor.x
-            this.y += this.height * this.anchor.y
-        } else {
-            this.pivot.x = this.width / 2
-            this.pivot.y = this.height / 2
-            this.x += this.pivot.x
-            this.y += this.pivot.y
-        }
+        fix(target)
     }
 
-    this.on('added', () => executable())
-    if (this.parent) executable()
+    target.on('added', () => executable())
+    if (target.parent) executable()
 }
 
-export function putCenterX(this: any, offsetX: number = 0) {
-    const executable = () => {
-        const { width: parentWidth } = getSize(this.parent)
-        this.x = (parentWidth - this.width) / 2 + offsetX
-
-        if (this.anchor) {
-            this.anchor.x = .5
-            this.x += this.width * this.anchor.x
-        } else {
-            this.pivot.x = this.width / 2
-            this.x += this.pivot.x
-        }
+export function putCenterX(target: any, offsetX: number = 0, global = false) {
+    if (typeof offsetX === 'boolean') {
+        global = offsetX
+        offsetX = 0
     }
-    this.on('added', () => executable())
-    if (this.parent) executable()
-}
-
-export function putCenterY(this: any, offsetY: number = 0) {
     const executable = () => {
-        const { height: parentHeight } = getSize(this.parent)
-        this.y = (parentHeight - this.height) / 2 + offsetY
+        const { width: parentWidth } = getSize(target.parent, global)
 
-        if (this.anchor) {
-            this.anchor.y = .5
-            this.y += this.width * this.anchor.y
-        } else {
-            this.pivot.y = this.height / 2
-            this.y += this.pivot.y
-        }
+        target.x = (parentWidth - target.width) / 2 + offsetX
+
+        fixX(target)
     }
-    this.on('added', () => executable())
-    if (this.parent) executable()
+    target.on('added', () => executable())
+    if (target.parent) executable()
 }
 
-export function putLeft(this: any, offsetX: number = 0) {
-    this.on('added', () => {
-        this.x = offsetX
+export function putCenterY(target: any, offsetY: number = 0, global = false) {
+    if (typeof offsetY === 'boolean') {
+        global = offsetY
+        offsetY = 0
+    }
+    const executable = () => {
+        const { height: parentHeight } = getSize(target.parent, global)
 
-        if (this.anchor) {
-            this.anchor.x = .5
-            this.x += this.width * this.anchor.x
-        } else {
-            this.pivot.x = this.width / 2
-            this.x += this.pivot.x
-        }
+        target.y = (parentHeight - target.height) / 2 + offsetY
+
+        fixY(target)
+    }
+    target.on('added', () => executable())
+    if (target.parent) executable()
+}
+
+export function putLeft(target: any, offsetX: number = 0, global = false) {
+    if (typeof offsetX === 'boolean') {
+        global = offsetX
+        offsetX = 0
+    }
+    target.on('added', () => {
+        target.x = offsetX
+
+        fixX(target)
     })
-    if (this.parent) this.x = offsetX
+    if (target.parent) target.x = offsetX
 }
 
-export function putTop(this: any, offsetY: number = 0) {
-    this.on('added', () => {
-        this.y = offsetY
+export function putTop(target: any, offsetY: number = 0, global = false) {
+    if (typeof offsetY === 'boolean') {
+        global = offsetY
+        offsetY = 0
+    }
+    target.on('added', () => {
+        target.y = offsetY
 
-        if (this.anchor) {
-            this.anchor.y = .5
-            this.y += this.width * this.anchor.y
-        } else {
-            this.pivot.y = this.height / 2
-            this.y += this.pivot.y
-        }
+        fixY(target)
     })
-    if (this.parent) this.y = offsetY
+    if (target.parent) target.y = offsetY
 }
 
-export function putRight(this: any, offsetX: number = 0) {
-    const executable = () => {
-        const { width: parentWidth } = getSize(this.parent)
-        this.x = parentWidth - this.width - offsetX
-
-        if (this.anchor) {
-            this.anchor.x = .5
-            this.x += this.width * this.anchor.x
-        } else {
-            this.pivot.x = this.width / 2
-            this.x += this.pivot.x
-        }
+export function putRight(target: any, offsetX: number = 0, global = false) {
+    if (typeof offsetX === 'boolean') {
+        global = offsetX
+        offsetX = 0
     }
-    this.on('added', () => executable())
-    if (this.parent) executable()
+    const executable = () => {
+        const { width: parentWidth } = getSize(target.parent, global)
+
+        target.x = parentWidth - target.width - offsetX
+
+        fixX(target)
+    }
+    target.on('added', () => executable())
+    if (target.parent) executable()
 }
 
-export function putBottom(this: any, offsetY: number = 0) {
-    const executable = () => {
-        const { height: parentHeight } = getSize(this.parent)
-        this.y = parentHeight - this.height - offsetY
-
-        if (this.anchor) {
-            this.anchor.y = .5
-            this.y += this.width * this.anchor.y
-        } else {
-            this.pivot.y = this.height / 2
-            this.y += this.pivot.y
-        }
+export function putBottom(target: any, offsetY: number = 0, global = false) {
+    if (typeof offsetY === 'boolean') {
+        global = offsetY
+        offsetY = 0
     }
-    this.on('added', () => executable())
-    if (this.parent) executable()
+    const executable = () => {
+        const { height: parentHeight } = getSize(target.parent, global)
+
+        target.y = parentHeight - target.height - offsetY
+
+        fixY(target)
+    }
+    target.on('added', () => executable())
+    if (target.parent) executable()
 }
