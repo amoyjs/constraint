@@ -34,6 +34,7 @@
     };
     function getSize(target, global) {
         if (global === void 0) { global = false; }
+        target = target.clone();
         var scaleX = target.scale.x;
         var scaleY = target.scale.y;
         var width = target.isStage || global ? ScreenSize.width : target.width / scaleX;
