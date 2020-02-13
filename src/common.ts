@@ -6,7 +6,7 @@ export const ScreenSize = {
 }
 
 export function getSize(target: any, global = false) {
-    target = target.clone()
+    if (target.clone) target = target.clone()
     const scaleX = target.scale.x
     const scaleY = target.scale.y
     const width = target.isStage || global ? ScreenSize.width : target.width / scaleX
