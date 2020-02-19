@@ -9,6 +9,7 @@ const { moduleName, name } = require('./package.json')
 const fileName = name.replace('@amoy/', '')
 const getFilePath = (type = '') => `dist/${fileName}${type == '' ? '' : '.'}${type}.js`
 const output = options => ({
+    exports: 'named',
     name: moduleName,
     sourcemap: true,
     ...options,

@@ -46,30 +46,22 @@
         };
     }
     function fix(target) {
+        target.x += target.pivot.x * target.scale.x;
+        target.y += target.pivot.y * target.scale.y;
         if (target.anchor) {
             target.x += target.width * target.anchor.x;
             target.y += target.height * target.anchor.y;
-        }
-        else {
-            target.x += target.pivot.x * target.scale.x;
-            target.y += target.pivot.y * target.scale.y;
         }
     }
     function fixX(target) {
-        if (target.anchor) {
+        target.x += target.pivot.x * target.scale.x;
+        if (target.anchor)
             target.x += target.width * target.anchor.x;
-        }
-        else {
-            target.x += target.pivot.x * target.scale.x;
-        }
     }
     function fixY(target) {
-        if (target.anchor) {
+        target.y += target.pivot.y * target.scale.y;
+        if (target.anchor)
             target.y += target.height * target.anchor.y;
-        }
-        else {
-            target.y += target.pivot.y * target.scale.y;
-        }
     }
 
     function putCenter(target, offsetX, offsetY, global) {
