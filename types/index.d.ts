@@ -19,5 +19,6 @@ declare namespace PIXI {
 }
 
 declare module '@amoy/constraint' {
+    export function createConstraint(width: number, height: number): () => void
     export default function constraint(PIXI: any): any
 }

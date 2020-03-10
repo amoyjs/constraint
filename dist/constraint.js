@@ -172,7 +172,7 @@
             executable();
     }
 
-    var constraint = /*#__PURE__*/Object.freeze({
+    var _constraint = /*#__PURE__*/Object.freeze({
         putCenter: putCenter,
         putCenterX: putCenterX,
         putCenterY: putCenterY,
@@ -182,8 +182,8 @@
         putBottom: putBottom
     });
 
-    var constraints = constraint;
-    function index (_a) {
+    var constraints = _constraint;
+    function constraint(_a) {
         var Container = _a.Container;
         var _loop_1 = function (key) {
             Container.prototype[key] = function () {
@@ -198,9 +198,15 @@
             _loop_1(key);
         }
     }
+    function createConstraint(width, height) {
+        ScreenSize.width = width;
+        ScreenSize.height = height;
+        return constraint;
+    }
 
     exports.constraints = constraints;
-    exports.default = index;
+    exports.createConstraint = createConstraint;
+    exports.default = constraint;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
