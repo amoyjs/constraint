@@ -199,5 +199,5 @@ function createConstraint(width, height) {
 }
 
 export default constraint;
-export { constraints, createConstraint };
+export { constraints, createConstraint, fix, fixX, fixY };
 //# sourceMappingURL=constraint.es.js.map

@@ -207,6 +207,9 @@
     exports.constraints = constraints;
     exports.createConstraint = createConstraint;
     exports.default = constraint;
+    exports.fix = fix;
+    exports.fixX = fixX;
+    exports.fixY = fixY;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

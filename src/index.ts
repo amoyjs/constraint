@@ -2,6 +2,7 @@ import { ScreenSize } from './common'
 import * as _constraint from './constraint'
 
 export const constraints = _constraint
+export { fix, fixX, fixY } from './common'
 
 export default function constraint({ Container }: any) {
     for (const key in constraints) {
