@@ -27,11 +27,25 @@
         return r;
     }
 
-    var width = window.innerWidth, height = window.innerHeight;
-    var ScreenSize = {
-        width: width,
-        height: height,
-    };
+    var ScreenSize = /** @class */ (function () {
+        function ScreenSize() {
+        }
+        Object.defineProperty(ScreenSize, "width", {
+            get: function () {
+                return innerWidth;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(ScreenSize, "height", {
+            get: function () {
+                return innerHeight;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        return ScreenSize;
+    }());
     function getSize(target, global) {
         if (global === void 0) { global = false; }
         if (target.clone)
@@ -198,14 +212,8 @@
             _loop_1(key);
         }
     }
-    function createConstraint(width, height) {
-        ScreenSize.width = width;
-        ScreenSize.height = height;
-        return constraint;
-    }
 
     exports.constraints = constraints;
-    exports.createConstraint = createConstraint;
     exports.default = constraint;
     exports.fix = fix;
     exports.fixX = fixX;

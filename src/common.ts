@@ -1,8 +1,11 @@
-const { innerWidth: width, innerHeight: height } = window
 
-export const ScreenSize = {
-    width,
-    height,
+export class ScreenSize {
+    static get width() {
+        return innerWidth
+    }
+    static get height() {
+        return innerHeight
+    }
 }
 
 export function getSize(target: any, global = false) {
