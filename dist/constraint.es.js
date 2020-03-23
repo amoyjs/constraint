@@ -26,18 +26,26 @@ var ScreenSize = /** @class */ (function () {
     }
     Object.defineProperty(ScreenSize, "width", {
         get: function () {
-            return innerWidth;
+            return this._width;
+        },
+        set: function (width) {
+            this._width = width;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(ScreenSize, "height", {
         get: function () {
-            return innerHeight;
+            return this._height;
+        },
+        set: function (height) {
+            this._height = height;
         },
         enumerable: true,
         configurable: true
     });
+    ScreenSize._width = innerWidth;
+    ScreenSize._height = innerHeight;
     return ScreenSize;
 }());
 function getSize(target, global) {
@@ -206,7 +214,12 @@ function constraint(_a) {
         _loop_1(key);
     }
 }
+function createConstraint(width, height) {
+    ScreenSize.width = width;
+    ScreenSize.height = height;
+    return constraint;
+}
 
 export default constraint;
-export { constraints, fix, fixX, fixY };
+export { constraints, createConstraint, fix, fixX, fixY };
 //# sourceMappingURL=constraint.es.js.map

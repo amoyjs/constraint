@@ -1,10 +1,18 @@
 
 export class ScreenSize {
+    static _width: number = innerWidth
+    static _height: number = innerHeight
     static get width() {
-        return innerWidth
+        return this._width
+    }
+    static set width(width) {
+        this._width = width
     }
     static get height() {
-        return innerHeight
+        return this._height
+    }
+    static set height(height) {
+        this._height = height
     }
 }
 
