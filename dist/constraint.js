@@ -205,8 +205,9 @@
     });
 
     var constraints = _constraint;
-    function constraint(_a) {
+    function deprecatedConstraint(_a) {
         var Container = _a.Container;
+        console.warn('deprecatedConstraint');
         var _loop_1 = function (key) {
             Container.prototype[key] = function () {
                 var args = [];
@@ -220,6 +221,23 @@
             _loop_1(key);
         }
     }
+    function constraint(event) {
+        event.on('beforeCreate', function (_a) {
+            var PIXI = _a.PIXI;
+            var _loop_2 = function (key) {
+                PIXI.Container.prototype[key] = function () {
+                    var args = [];
+                    for (var _i = 0; _i < arguments.length; _i++) {
+                        args[_i] = arguments[_i];
+                    }
+                    constraints[key].apply(constraints, __spreadArrays([this], args));
+                };
+            };
+            for (var key in constraints) {
+                _loop_2(key);
+            }
+        });
+    }
     function createConstraint(width, height) {
         ScreenSize.width = width;
         ScreenSize.height = height;
@@ -229,6 +247,7 @@
     exports.constraints = constraints;
     exports.createConstraint = createConstraint;
     exports.default = constraint;
+    exports.deprecatedConstraint = deprecatedConstraint;
     exports.fix = fix;
     exports.fixX = fixX;
     exports.fixY = fixY;

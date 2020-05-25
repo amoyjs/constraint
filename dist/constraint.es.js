@@ -199,8 +199,9 @@ var _constraint = /*#__PURE__*/Object.freeze({
 });
 
 var constraints = _constraint;
-function constraint(_a) {
+function deprecatedConstraint(_a) {
     var Container = _a.Container;
+    console.warn('deprecatedConstraint');
     var _loop_1 = function (key) {
         Container.prototype[key] = function () {
             var args = [];
@@ -214,6 +215,23 @@ function constraint(_a) {
         _loop_1(key);
     }
 }
+function constraint(event) {
+    event.on('beforeCreate', function (_a) {
+        var PIXI = _a.PIXI;
+        var _loop_2 = function (key) {
+            PIXI.Container.prototype[key] = function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i] = arguments[_i];
+                }
+                constraints[key].apply(constraints, __spreadArrays([this], args));
+            };
+        };
+        for (var key in constraints) {
+            _loop_2(key);
+        }
+    });
+}
 function createConstraint(width, height) {
     ScreenSize.width = width;
     ScreenSize.height = height;
@@ -221,5 +239,5 @@ function createConstraint(width, height) {
 }
 
 export default constraint;
-export { constraints, createConstraint, fix, fixX, fixY };
+export { constraints, createConstraint, deprecatedConstraint, fix, fixX, fixY };
 //# sourceMappingURL=constraint.es.js.map

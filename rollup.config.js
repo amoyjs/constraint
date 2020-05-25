@@ -32,7 +32,7 @@ const configure = {
         commonjs(),
         resolve(),
     ],
-    external: [],
+    external: ['eventemitter3', 'pixi.js'],
 }
 
 if (isProd) {
