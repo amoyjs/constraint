@@ -189,6 +189,7 @@ function putBottom(target, offsetY, global) {
 }
 
 var _constraint = /*#__PURE__*/Object.freeze({
+    __proto__: null,
     putCenter: putCenter,
     putCenterX: putCenterX,
     putCenterY: putCenterY,
@@ -240,4 +241,4 @@ function createConstraint(width, height) {
 
 export default constraint;
 export { constraints, createConstraint, deprecatedConstraint, fix, fixX, fixY };
-//# sourceMappingURL=constraint.es.js.map
+//# sourceMappingURL=index.es.js.map
