@@ -1,8 +1,6 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "declaration": true,
-        "declarationMap": true,
         "allowSyntheticDefaultImports": true,
     }
 }
