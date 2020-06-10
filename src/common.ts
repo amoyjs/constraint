@@ -1,17 +1,19 @@
-export function getCanvas() {
+export function getGameViewSize() {
     const canvas = document.getElementById('GAME_VIEW')
-    return canvas
+    if (canvas) {
+        return canvas.getBoundingClientRect()
+    } else {
+        return { width: innerWidth, height: innerHeight }
+    }
 }
 
 export function getSize(target: any, global = false) {
     if (target.clone) target = target.clone()
-    const canvas = getCanvas()
-    const canvasWidth = parseFloat(canvas.style.width)
-    const canvasHeight = parseFloat(canvas.style.height)
+    const { width: gameViewWidth, height: gameViewHeight } = getGameViewSize()
     const scaleX = target.scale.x
     const scaleY = target.scale.y
-    const width = target.isStage || global ? canvasWidth : target.width / scaleX
-    const height = target.isStage || global ? canvasHeight : target.height / scaleY
+    const width = target.isStage || target.isScene || global ? gameViewWidth : target.width / scaleX
+    const height = target.isStage || target.isScene || global ? gameViewHeight : target.height / scaleY
 
     return {
         width,
