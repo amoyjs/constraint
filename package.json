@@ -1,7 +1,7 @@
 {
   "name": "@amoy/constraint",
   "moduleName": "constraint",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "constraint for pixi.js.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",

@@ -1,5 +1,4 @@
 import * as _constraint from './constraint'
-import { ScreenSize } from './common'
 import Event from 'eventemitter3'
 
 export const constraints = _constraint
@@ -22,10 +21,4 @@ export default function constraint(event: Event) {
             }
         }
     })
-}
-
-export function createConstraint(width: number, height: number) {
-    ScreenSize.width = width
-    ScreenSize.height = height
-    return constraint
 }

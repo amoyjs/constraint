@@ -1,27 +1,17 @@
-
-export class ScreenSize {
-    static _width: number = innerWidth
-    static _height: number = innerHeight
-    static get width() {
-        return this._width
-    }
-    static set width(width) {
-        this._width = width
-    }
-    static get height() {
-        return this._height
-    }
-    static set height(height) {
-        this._height = height
-    }
+export function getCanvas() {
+    const canvas = document.getElementById('GAME_VIEW')
+    return canvas
 }
 
 export function getSize(target: any, global = false) {
     if (target.clone) target = target.clone()
+    const canvas = getCanvas()
+    const canvasWidth = parseFloat(canvas.style.width)
+    const canvasHeight = parseFloat(canvas.style.height)
     const scaleX = target.scale.x
     const scaleY = target.scale.y
-    const width = target.isStage || global ? ScreenSize.width : target.width / scaleX
-    const height = target.isStage || global ? ScreenSize.height : target.height / scaleY
+    const width = target.isStage || global ? canvasWidth : target.width / scaleX
+    const height = target.isStage || global ? canvasHeight : target.height / scaleY
 
     return {
         width,
