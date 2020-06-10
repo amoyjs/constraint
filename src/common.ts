@@ -1,7 +1,9 @@
 export function getGameViewSize() {
     const canvas = document.getElementById('GAME_VIEW')
     if (canvas) {
-        return canvas.getBoundingClientRect()
+        const resolution = parseInt(canvas.getAttribute('resolution'))
+        // @ts-ignore
+        return { width: canvas.width / resolution, height: canvas.height / resolution }
     } else {
         return { width: innerWidth, height: innerHeight }
     }
