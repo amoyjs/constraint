@@ -20,13 +20,13 @@ declare namespace PIXI {
 
 declare module '@amoy/constraint' {
     export const constraints: {
-        putCenter(target: any, offsetX: number, offsetY: number, global: boolean): void
-        putCenterX(target: any, offsetX: number, global: boolean): void
-        putCenterY(target: any, offsetY: number, global: boolean): void
-        putLeft(target: any, offsetX: number, global: boolean): void
-        putTop(target: any, offsetY: number, global: boolean): void
-        putRight(target: any, offsetX: number, global: boolean): void
-        putBottom(target: any, offsetY: number, global: boolean): void
+        putCenter(target: any, offsetX?: number, offsetY?: number, global?: boolean): void
+        putCenterX(target: any, offsetX?: number, global?: boolean): void
+        putCenterY(target: any, offsetY?: number, global?: boolean): void
+        putLeft(target: any, offsetX?: number, global?: boolean): void
+        putTop(target: any, offsetY?: number, global?: boolean): void
+        putRight(target: any, offsetX?: number, global?: boolean): void
+        putBottom(target: any, offsetY?: number, global?: boolean): void
     }
     export function fix(target: any): void
     export function fixX(target: any): void
